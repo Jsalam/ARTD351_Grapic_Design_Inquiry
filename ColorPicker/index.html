@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<!-- Juan Salamanca 2018 -->
+
+<html>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+
+    Color Picker 
+
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/poole.css">
+
+  <script src="libs/p5.js" type="text/javascript"></script>
+  <script src="libs/p5.dom.js" type="text/javascript"></script>
+  <script src="libs/chroma.min.js" type="text/javascript"></script>
+
+  <!-- ColorPicker -->
+  <script src="colorPicker.js"></script> 
+  <script src="colorPalette.js"></script> 
+  <script src="Grid.js"></script>
+  <script src="colorBlock.js"></script> 
+
+  <style type="text/css">
+  #drop_zone {
+    padding: 24px;
+    border-style: dashed;
+    font-size: 12pt;
+    width: 960px;
+    height: 70px;
+  }
+</style>
+
+</head>
+
+
+<body>
+
+  <div class="container content">
+    <main>
+      <article class="page">  
+
+        <p> ARTD 351. Graphic Design Inquiry &middot;  Graphic Design &middot; 
+        </p>
+        <p>
+        <label>University of Illinois at Urbana-Champaign &middot; Juan Salamanca 2018 
+        </label></p> 
+
+        <h1 class="page-title">Hand-picked color palettes</h1>
+
+        <!-- Subtitle -->
+        <h3 id="intro">Introduction</h3>
+        <p> The color picker implemented in this web page helps designers to create color palettes for the visualization of datasets in the process of data analytics. The palettes are made of colors selected from an image and sorted by the perceived distance between them. To help the sorting task, each picked color can be visualized as one of its color components in the  HSV and Lab color spaces.</p>
+        <p> We are interested in developing functional and symbolic color palettes from images linked to the actual phenomena captured in datasets. For instance, the color palette used to visualize bird migrations is crafted from actual pictures of birds. We decide not to use interpolations between colors, that is why instead of using computational tools to automatically build the palettes, we hand-pick colors following a perceptual approach. </p>
+
+        <!-- Subtitle -->
+        <h3 id="process">Process</h3>
+            <p> Take several photographs related to the topic of the dataset you chose for your visualization project.  Compose the photos having in mind:</p>
+
+            <ul>
+              <li> For categorical color palettes take photos with as many hues as possible</li>
+              <li> For sequential color palettes take photos with a few dominant hues and a wide range of saturation and lightness</li>
+              <li> For divergent color palettes take photos with two or three dominant hues and a wide range of saturation and lightness</li>
+            </ul>
+              
+              
+            <p> Choose the photo you want to use and start picking the colors. To reduce the number of colors you can pixelate the image using Photoshop. Try different filters and evaluate the results but do not over-simplify the image. The number of resulting colors should be around 255. The crystalize filter is highly recommended,</p>
+
+            <p> Save the image as .png or .jpg and load it into the color picker tool</p>
+            <p> Pick the colors you want for your palette. Try to select them in order from lighter to darker or viceversa.</p>
+            <p> If you are picking colors for a categorical palette, the order does not matter, just try to pick the ones that clearly differentiate from each other</p>
+            <p> Sort the selection based on the color attributes. </p>
+            <p> Evaluate your palette in terms of value linearity and chroma diversity until you have a consistent sequence of colors.</p>
+
+            <p> Once you are satisfied with your palette, export it in RGB format.
+
+        <p> This color picker tool has been tested on Chrome and Safari. Some glitches may happen in Firefox and Internet Explorer</p>
+        <hr>
+        <!-- Subtitle -->
+        <h3 id="tool">Color picker</h3>
+
+        <p id = "drop_zone"> Drag one image file here ...</p>
+        
+        <div id="colorPicker"></div>
+
+        <hr>
+        <!-- Subtitle -->
+        <h3 id="results"> Hand-picked color palette</h3>
+
+        <div> Kind of palette
+        <button  type = "button" id = "categorical" > Categorical </button>
+        <button  type = "button" id = "sequential" > Sequential </button>
+        <button  type = "button" id = "divergent" > Divergent </button></div>
+
+        <div> Size of palette (max 256)
+        <input id = "gridSize" type="number" name="quantity" min="1" max="256">
+        <button  type = "button" id = "submitSize" > Submit </button></div>
+
+
+        <div id="colorPalette"></div>
+
+        <hr>
+        <!-- Palette buttons -->
+        <div>Visualize colors by components</div>
+        <p>Composed color <button  type = "button" id = "switch_Normal" > Show color </button></p>
+        <p>HSV color space
+        <button  type = "button" id = "switch_Hue" > Show hue </button>
+        <button  type = "button" id = "switch_Saturation" > Show saturation </button>
+        <button  type = "button" id = "switch_Value" > Show Value </button></p>
+        <p>Lab color space
+        <button  type = "button" id = "switch_Luminance" > Show luminance </button></p>
+
+        <hr>
+
+        <div>Export palette</div>
+        <p> <button  type = "button" id = "save_palette_rgb" > Export in rgb format </button> <button  type = "button" id = "save_palette_hsb" > Export in hsb format </button> <button  type = "button" id = "save_palette_lab" > Export in Lab format </button></p>
+
+        <div>Capture color palette screenshot</div>
+         <p> <button  type = "button" id = "save_palette" > Capture palette </button></p>
+
+        <hr>
+        <!-- References -->
+        <h3 id="references">References</h3>
+
+        <p><a href="http://tools.medialab.sciences-po.fr/iwanthue/" target="_blank">I Want Hue</a></p>
+
+        <p><a href="http://gka.github.io/chroma.js/#color-luminance" target="_blank">chroma.js</a></p>
+
+        <p><a href="http://p5js.org" target="_blank">P5*js</a></p>
+
+        <p><a href="http://colorbrewer2.org/" target="_blank">Colorbrewer</a></p>
+
+      </article>
+    </main>
+  </div>
+</body>
+</html>
